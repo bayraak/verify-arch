@@ -1,0 +1,55 @@
+{
+  "name": "verify-arch",
+  "version": "0.1.0",
+  "description": "Whole-graph architecture gate for Medusa 2.x codebases. Catches cross-file footguns a per-file linter cannot see: serviceName collisions, route-path collisions, loader-skipped index.ts side-effects (medusajs/medusa#15442), duplicate query steps without .config({ name }).",
+  "keywords": [
+    "medusa",
+    "medusajs",
+    "architecture",
+    "lint",
+    "static-analysis",
+    "monorepo",
+    "ci"
+  ],
+  "license": "MIT",
+  "author": "Bayram Ali Basgul",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bayraak/verify-arch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bayraak/verify-arch/issues"
+  },
+  "type": "module",
+  "bin": {
+    "verify-arch": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run test && npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
