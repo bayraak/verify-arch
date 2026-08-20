@@ -1,5 +1,7 @@
 # verify-arch
 
+[![CI](https://github.com/bayraak/verify-arch/actions/workflows/ci.yml/badge.svg)](https://github.com/bayraak/verify-arch/actions/workflows/ci.yml)
+
 A whole-graph architecture gate for Medusa 2.x codebases. One command, exit 0 or 1.
 
 A per-file linter sees one file. Every bug this tool catches lives *between* files: two files that
@@ -8,8 +10,8 @@ conflicts by silently letting the last one win. Nothing throws. Nothing warns. Y
 or subscriber just quietly stops existing.
 
 ```
-npx verify-arch            # scan the current directory
-npx verify-arch path/to/repo
+npx github:bayraak/verify-arch   # not on npm yet; runs straight from GitHub            # scan the current directory
+npx github:bayraak/verify-arch path/to/repo
 ```
 
 It scans `packages/`, `apps/`, and a root-level `src/` (so both monorepos and single Medusa apps
@@ -76,7 +78,7 @@ which is nondeterministic — checkpoint identity can drift across processes and
 ## CI
 
 ```yaml
-- run: npx verify-arch
+- run: npx github:bayraak/verify-arch
 ```
 
 Non-zero exit on any violation; that is the whole contract. Put it next to your linter, not
@@ -90,7 +92,7 @@ There is no config file. Two things are configurable at the call site:
   (e.g. `createScheduledWorkflow`), name them so the workflow-scoped rules see through the wrapper:
 
   ```
-  npx verify-arch . --workflow-factory createScheduledWorkflow
+  npx github:bayraak/verify-arch . --workflow-factory createScheduledWorkflow
   ```
 
 - The escape-hatch comments shown above: `arch:inline-mutation-ok(<reason>)` and
