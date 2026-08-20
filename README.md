@@ -1,6 +1,6 @@
 # verify-arch
 
-[![CI](https://github.com/bayraak/verify-arch/actions/workflows/ci.yml/badge.svg)](https://github.com/bayraak/verify-arch/actions/workflows/ci.yml)
+[![CI](https://github.com/bayraak/verify-arch/actions/workflows/ci.yml/badge.svg)](https://github.com/bayraak/verify-arch/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/verify-arch)](https://www.npmjs.com/package/verify-arch)
 
 A whole-graph architecture gate for Medusa 2.x codebases. One command, exit 0 or 1.
 
